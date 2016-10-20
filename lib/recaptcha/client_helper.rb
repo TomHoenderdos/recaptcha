@@ -27,6 +27,10 @@ module Recaptcha
         tag_attributes << %( id="#{id}")
       end
 
+      if callback = options[:callback_function]
+        tag_attributes << %( data-callback="#{callback}")
+      end
+
       html = ""
       html << %(<script src="#{script_url}" async defer></script>\n) if options.fetch(:script, true)
       html << %(<div class="g-recaptcha" #{tag_attributes}></div>\n)
